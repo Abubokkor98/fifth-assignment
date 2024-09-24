@@ -1,28 +1,34 @@
-// const myBalance  = document.getElementById('my-balance');
-// const updatedMyBalance = parseFloat(myBalance.innerText);
-// console.log(updatedMyBalance);
+// function-1:
+function getElementById(id){
+    return document.getElementById(id);
+}
 
-// const totalDonations = document.getElementById('total-amount-1');
-// const updatedTotalDonations = parseFloat(totalDonations.innerText);
-// console.log(updatedTotalDonations);
-// const myDonation = Number(document.getElementById('donate-amount1').value);
-// console.log(myDonation);
+const noakhaliFlood = getElementById('noakhali-flood').innerText;
+const feniFlood = getElementById('feni-flood').innerText;
+const quotaMovement = getElementById('quata-movement').innerText;
 
-// Noakhali Flood
-const donateBtn = document.getElementById('donate-btn1').addEventListener('click',function(){
+//function-2: History function
+function addToHistory(myDonation, noakhaliFlood){
+    const historyItem = document.createElement("div");
+    historyItem.className =
+      "bg-white p-3 rounded-md border-l-2 border-indigo-500 mb-2";
+    historyItem.innerHTML = `
+    <p class='text-lg text-grey-500'>${myDonation.toFixed(2)} taka is donated for ${noakhaliFlood}</p>
+     <p class='text-xs text-grey-500'> ${new Date().toLocaleString()}</p>
+    `;
+    const historyContainer = document.getElementById("history-list");
+    historyContainer.appendChild(historyItem);
+  }
 
-    const myBalance  = document.getElementById('my-balance');
+// Noakhali Flood Button
+const donateBtn = getElementById('donate-btn1').addEventListener('click',function(){
+
+    const myBalance  = getElementById('my-balance');
     const updatedMyBalance = parseFloat(myBalance.innerText);
-    console.log(updatedMyBalance);
-
-    const totalDonations = document.getElementById('total-amount-1');
+    const totalDonations = getElementById('total-amount-1');
     const updatedTotalDonations = parseFloat(totalDonations.innerText);
-    console.log(updatedTotalDonations);
-    const myDonation = Number(document.getElementById('donate-amount1').value);
-    console.log(myDonation);
-
-
-     // validation
+    const myDonation = Number(getElementById('donate-amount1').value);
+    
      if(myDonation <= 0 || isNaN(myDonation)){
         alert('invalid amount');
         return;
@@ -31,54 +37,28 @@ const donateBtn = document.getElementById('donate-btn1').addEventListener('click
         alert('You do not have enough balance')
         return;
     }
-    // else{
-    //     alert('you have successfully donated')
-    // }
-
-    // my_modal_1.showModal()
-
+ 
     const newTotalDonations = updatedTotalDonations + myDonation;
-    console.log(newTotalDonations);
     totalDonations.innerText = newTotalDonations.toFixed(2);
-
     const myNewBalance = updatedMyBalance - myDonation;
-    console.log(myNewBalance);
     myBalance.innerText = myNewBalance.toFixed(2);
 
+    //   add to history
+        addToHistory(myDonation, noakhaliFlood);
 
-
-        // calculation history
-        const historyContainer = document.getElementById('history-list');
-
-        const historyItem = document.createElement('div');
-        historyItem.className = 'bg-white p-3 rounded-md border-l-2 border-indigo-500 mb-2';
-    
-        historyItem.innerHTML = `
-        <p class='text-lg text-grey-500'>${myDonation.toFixed(2)} taka is donated for Flood at Noakhali, Bangladesh.</p>
-         <p class='text-xs text-grey-500'> ${new Date().toLocaleString()}</p>
-        `;
-        historyContainer.appendChild(historyItem);
-        // historyContainer.insertBefore(historyItem, historyContainer.firstChild);
-        
-        // modal call
-        my_modal_1.showModal()
+     // modal call
+     my_modal_1.showModal();
 })
 
-// feni flood
-const donateBtn2 = document.getElementById('donate-btn2').addEventListener('click',function(){
+// feni flood button
+const donateBtn2 = getElementById('donate-btn2').addEventListener('click',function(){
 
-    const myBalance  = document.getElementById('my-balance');
+    const myBalance  = getElementById('my-balance');
     const updatedMyBalance = parseFloat(myBalance.innerText);
-    console.log(updatedMyBalance);
-
-    const totalDonations = document.getElementById('total-amount-2');
+    const totalDonations = getElementById('total-amount-2');
     const updatedTotalDonations = parseFloat(totalDonations.innerText);
-    console.log(updatedTotalDonations);
-    const myDonation = Number(document.getElementById('donate-amount2').value);
-    console.log(myDonation);
-
-
-     // validation
+    const myDonation = Number(getElementById('donate-amount2').value);
+    
      if(myDonation <= 0 || isNaN(myDonation)){
         alert('invalid amount');
         return;
@@ -87,54 +67,29 @@ const donateBtn2 = document.getElementById('donate-btn2').addEventListener('clic
         alert('You do not have enough balance')
         return;
     }
-    // else{
-    //     alert('you have successfully donated')
-    // }
-
-    // my_modal_1.showModal()
-
+ 
     const newTotalDonations = updatedTotalDonations + myDonation;
-    console.log(newTotalDonations);
     totalDonations.innerText = newTotalDonations.toFixed(2);
-
     const myNewBalance = updatedMyBalance - myDonation;
-    console.log(myNewBalance);
     myBalance.innerText = myNewBalance.toFixed(2);
 
+    //   add to history
+        addToHistory(myDonation, feniFlood);
 
-
-        // calculation history
-        const historyContainer = document.getElementById('history-list');
-
-        const historyItem = document.createElement('div');
-        historyItem.className = 'bg-white p-3 rounded-md border-l-2 border-indigo-500 mb-2';
-    
-        historyItem.innerHTML = `
-        <p class='text-lg text-grey-500'>${myDonation.toFixed(2)} taka is donated for Flood Relief in Feni,Bangladesh</p>
-         <p class='text-xs text-grey-500'> ${new Date().toLocaleString()}</p>
-        `;
-        historyContainer.appendChild(historyItem);
-        // historyContainer.insertBefore(historyItem, historyContainer.firstChild);  
-
-            // modal call
-            my_modal_1.showModal()
+     // modal call
+     my_modal_1.showModal();
 })
 
-// quota movement
-const donateBtn3 = document.getElementById('donate-btn3').addEventListener('click',function(){
 
-    const myBalance  = document.getElementById('my-balance');
+// quota movement button
+const donateBtn3 = getElementById('donate-btn3').addEventListener('click',function(){
+
+    const myBalance  = getElementById('my-balance');
     const updatedMyBalance = parseFloat(myBalance.innerText);
-    console.log(updatedMyBalance);
-
-    const totalDonations = document.getElementById('total-amount-3');
+    const totalDonations = getElementById('total-amount-3');
     const updatedTotalDonations = parseFloat(totalDonations.innerText);
-    console.log(updatedTotalDonations);
-    const myDonation = Number(document.getElementById('donate-amount3').value);
-    console.log(myDonation);
-
-
-     // validation
+    const myDonation = Number(getElementById('donate-amount3').value);
+    
      if(myDonation <= 0 || isNaN(myDonation)){
         alert('invalid amount');
         return;
@@ -143,47 +98,26 @@ const donateBtn3 = document.getElementById('donate-btn3').addEventListener('clic
         alert('You do not have enough balance')
         return;
     }
-    // else{
-    //     alert('you have successfully donated')
-    // }
-
-    // my_modal_1.showModal()
-
+ 
     const newTotalDonations = updatedTotalDonations + myDonation;
-    console.log(newTotalDonations);
     totalDonations.innerText = newTotalDonations.toFixed(2);
-
     const myNewBalance = updatedMyBalance - myDonation;
-    console.log(myNewBalance);
     myBalance.innerText = myNewBalance.toFixed(2);
 
+    //   add to history
+        addToHistory(myDonation, quotaMovement);
 
-
-        // calculation history
-        const historyContainer = document.getElementById('history-list');
-
-        const historyItem = document.createElement('div');
-        historyItem.className = 'bg-white p-3 rounded-md border-l-2 border-indigo-500 mb-2';
-    
-        historyItem.innerHTML = `
-        <p class='text-lg text-grey-500'>${myDonation.toFixed(2)} taka is donated for Aid for Injured in the Quota Movement</p>
-         <p class='text-xs text-grey-500'> ${new Date().toLocaleString()}</p>
-        `;
-        historyContainer.appendChild(historyItem);
-        // historyContainer.insertBefore(historyItem, historyContainer.firstChild);
-        
-            // modal call
-            my_modal_1.showModal()
+     // modal call
+     my_modal_1.showModal();
 })
 
 
-// history button functionality
+// HISTORY button functionality
 const historyButton = document.getElementById('history-button');
 const donationButton = document.getElementById('donation-button');
 
 historyButton.addEventListener('click',function (){
     historyButton.classList.add('bg-btn-bg','font-semibold');
-    // historyButton.classList.remove('border-2','rounded-lg');
     donationButton.classList.remove('bg-btn-bg','font-semibold');
     donationButton.classList.add('border-2','rounded-lg')
 
@@ -191,7 +125,7 @@ historyButton.addEventListener('click',function (){
     document.getElementById('history-section').classList.remove('hidden');
 })
 
-// donation button functionality
+// DONATION button functionality
 donationButton.addEventListener('click',function (){
 
     donationButton.classList.add('bg-btn-bg','font-semibold');
@@ -201,14 +135,9 @@ donationButton.addEventListener('click',function (){
     document.getElementById('history-section').classList.add('hidden');
 })
 
-// page swap
+// PAGE SWAP to BLOG Page
 const blogPage = document.getElementById('blog');
 blogPage.addEventListener('click', function(){
     window.location.href = './blog.html';
 });
-const homePage = document.getElementById('home');
-homePage.addEventListener('click',function(){
-    console.log('home btn clicked');
-    window.location.href = './test.html';
-})
 
