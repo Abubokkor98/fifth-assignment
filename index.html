@@ -1,11 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment Five</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar with Tailwind CSS</title>
+  <!-- DaisyUI CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- google font CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+   <!-- tailwind config CDN -->
+   <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+            'btn-bg': '#B4F461',
+            "primary-text":'#111111',
+            "secondary-text":'#111111B3',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- CSS style -->
+   <style>
+     .font-Lexend{
+      font-family: "Lexend", sans-serif;
+         }
+   </style>
 </head>
-<body>
-    
+<body class="font-Lexend">
+  <header class="max-w-screen-xl mx-auto sticky top-0 backdrop-blur-lg">
+    <!-- navbar -->
+    <nav class="bg-[#F9F7F3]  mx-auto flex justify-between items-center navbar px-4 lg:px-6">
+        <button id="blog" class=" text-xl bg-btn-bg py-2 px-5 rounded-lg font-semibold text-primary-text">Blog</button>
+      <div class="space-x-0 lg:space-x-2">
+        <img src="./assets/logo.png" alt="" class="w-8 h-8 rounded-full hidden lg:block">
+        <h1 class="lg:text-xl lg:font-semibold text-primary-text">Donate Bangladesh</h1>
+      </div>
+      <div class="space-x-0 lg:space-x-2">
+        <img src="./assets/coin.png" alt="" class="w-8 h-8 rounded-full">
+        <h1 id="" class=" lg:text-xl text-secondary-text"><span id="my-balance">10000</span> BDT</h1>
+      </div>
+    </nav>
+
+    <!-- buttons -->
+    <div class="flex justify-center space-x-5 m-7 pb-5">
+      <button id="donation-button" class="text-xl bg-btn-bg p-4 rounded-lg font-semibold text-primary-text">Donation</button>
+      <button id="history-button" class="p-4 border-2 rounded-lg">History</button>
+     </div>
+  </header>
+
+
+<script src="index.js"></script>
 </body>
 </html>
