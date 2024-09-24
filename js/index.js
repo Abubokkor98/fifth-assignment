@@ -141,3 +141,5 @@ blogPage.addEventListener('click', function(){
     window.location.href = './blog.html';
 });
 
+console.log('index js file connected');
+
